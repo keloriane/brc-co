@@ -75,9 +75,9 @@ const ProductsSection = () => {
       </h2>
 
       {/* Tabs Navigation */}
-      <div className="relative w-full flex justify-center mb-8">
+      <div className="relative w-full sm:flex hidden justify-center  mb-8">
         <nav className="w-[90%] sm:w-[80%] lg:w-[48%] p-2  rounded-full flex justify-center">
-          <ul className="flex w-full max-w-xl">
+          <ul className="flex w-full max-w-xl ">
             {products.map((product, index) => (
               <li
                 key={index}

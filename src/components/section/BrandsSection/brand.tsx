@@ -18,7 +18,7 @@ const brands = [
   { src: soil.src, title: "soil", description: `Rolling cannabis Bud Belgium` },
   {
     src: gangster.src,
-    title: "Gangster",
+    title: "Gangster Paradise",
     description: `Rolling cannabis Bud Belgium`,
   },
   { src: haya.src, title: "Haya", description: `Rolling cannabis Bud Belgium` },
@@ -42,8 +42,8 @@ const brands = [
 
   {
     src: gangster.src,
-    title: "Gangster",
-    description: `Rolling cannabis Bud Belgium`,
+    title: "Green & CO",
+    description: `Cigarettes au CBD`,
   },
   { src: haze.src, title: "haze", description: `Rolling cannabis Bud Belgium` },
 ];
@@ -60,14 +60,14 @@ const BrandSection = () => {
           au sein de l’U.E.{" "}
         </h3>
       </Column>
-      <Column colStart={4} colEnd={18} className="w-full ">
-        <div className="grid grid-cols-4 gap-5 grid-rows-3 justify-center">
+      <Column colStart={5} colEnd={18} className="w-full p-5 ">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3  justify-center items-center max-w-[1000px]">
           {brands.map((brand, i) => (
             <BrandItem
               src={brand.src}
               title={brand.title}
-              key={brand.title}
               description={brand.description}
+              key={i}
               index={i}
             />
           ))}

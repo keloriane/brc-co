@@ -34,7 +34,7 @@ const Hero = () => {
         />
       </Head>
 
-      <header className="relative h-screen w-screen overflow-hidden">
+      <header className="relative md:h-screen h-[50vh] w-screen overflow-hidden">
         {/* Background Video with parallax and load animation */}
         <motion.video
           style={{ y }}
@@ -58,13 +58,13 @@ const Hero = () => {
             styles.gradient
           )}
         >
-          <div className="mb-[100px] px-4 max-w-[900px] ml-[40px]">
+          <div className="mb-[100px] px-4 max-w-[900px] md:ml-[40px] ">
             {/* Animated Title */}
             <motion.h1
               initial="hidden"
               animate="visible"
               variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-              className="text-white text-[87px] leading-[120%] font-black text-left uppercase"
+              className="text-white lg:text-[87px] md:text-[47px] text-[32px] leading-[120%] font-black text-left uppercase"
             >
               {text.map((word, i) => (
                 <motion.span key={i} className="inline-block overflow-hidden">

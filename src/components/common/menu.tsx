@@ -33,7 +33,8 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Check if the scroll position is greater than the viewport height (100vh)
-      if (window.scrollY > window.innerHeight) {
+      if (window.scrollY > window.innerHeight - 50) {
+        console.log(window.innerHeight);
         setScrolled(true);
       } else {
         setScrolled(false);

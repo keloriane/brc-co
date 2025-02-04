@@ -13,11 +13,11 @@ const containerVariants = {
 // Variant for the overlay using a 3D scale effect.
 // It scales from 0 to 1 along both X and Y axes.
 const linkVariants = {
-  initial: { scaleX: 0, scaleY: 0, opacity: 0 },
+  initial: { scaleX: 0, scaleY: 0 },
   hover: {
     scaleX: 1,
     scaleY: 1,
-    opacity: 1,
+
     transition: { duration: 0.3 },
   },
 };
@@ -29,7 +29,7 @@ const textContainerVariants = {
   initial: {},
   hover: {
     transition: {
-      delayChildren: 0.12, // Wait for the overlay to scale in (0.3s duration)
+      delayChildren: 0.13, // Wait for the overlay to scale in (0.3s duration)
       staggerChildren: 0.15,
     },
   },
@@ -37,10 +37,10 @@ const textContainerVariants = {
 
 // Variant for each text item (title and description).
 const textItemVariants = {
-  initial: { y: 20, opacity: 0 },
+  initial: { y: 50 },
   hover: {
     y: 0,
-    opacity: 1,
+
     transition: { duration: 0.3 },
   },
 };
@@ -54,16 +54,17 @@ type BrandItemProps = {
 
 const BrandItem = ({ src, title, description, index }: BrandItemProps) => {
   // Create a motion version of Next.js's Link.
-  const MotionLink = motion(Link);
+  const MotionLink = motion.create(Link);
 
   return (
     <motion.div
       variants={containerVariants}
       initial="initial"
       whileHover="hover"
-      className="relative flex items-center justify-center w-[240px] h-[240px]"
+      className="relative flex items-center justify-center w-[320px] h-[320px] sm:w-[240px] sm:h-[240px]"
       style={{
-        border: index % 2 === 0 ? "1.5px solid #DCE7C8" : "1.5px solid #8DAEC3",
+        // border: index % 2 === 0 ? "1.5px solid #DCE7C8" : "1.5px solid #8DAEC3",
+        background: index % 2 === 0 ? "#f8fcf0" : "#f5fbfe",
       }}
     >
       {/* Image content */}
@@ -106,18 +107,22 @@ const BrandItem = ({ src, title, description, index }: BrandItemProps) => {
         {/* Text content container */}
 
         <motion.div variants={textContainerVariants} className="w-[190px]">
-          <motion.h4
-            variants={textItemVariants}
-            className="text-[24px] font-black text-white uppercase"
-          >
-            {title}
-          </motion.h4>
-          <motion.p
-            variants={textItemVariants}
-            className="text-[16px] text-white font-medium"
-          >
-            {description}
-          </motion.p>
+          <div className=" overflow-hidden">
+            <motion.h4
+              variants={textItemVariants}
+              className="text-[25px] font-black text-white uppercase"
+            >
+              {title}
+            </motion.h4>
+          </div>
+          <div className="overflow-hidden">
+            <motion.p
+              variants={textItemVariants}
+              className="text-[16px] text-white font-medium"
+            >
+              {description}
+            </motion.p>
+          </div>
         </motion.div>
       </MotionLink>
     </motion.div>
