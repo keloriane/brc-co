@@ -1,0 +1,28 @@
+.sectionContainer {
+   
+}
+
+
+/* Make sure the transition is applied to all slides */
+
+  
+/* Ensure the inner container transitions the transform property */
+.slide-inner {
+    transition: transform 0.3s ease-out;
+  }
+  
+  /* When active, move the slide content up by 50px */
+  .translate-up {
+    transform: translateY(-50px);
+  }
+
+  .swiper-slide {
+    position: relative;
+    bottom: 0;
+    transition: bottom 0.3s ease-out;
+  }
+  
+  .swiper-slide-active {
+    bottom: 50px;
+  }
+  
