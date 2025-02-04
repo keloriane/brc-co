@@ -7,7 +7,7 @@ import Logo from "./logo";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import fleurs from "@/../public/fleurs.png";
-import crude from "@/../public/crude.png";
+import crude from "@/../public/Crude.png";
 
 const menuItems = [
   { name: "Nos activités", link: "/activites" },

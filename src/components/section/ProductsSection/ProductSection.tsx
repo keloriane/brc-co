@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { motion } from "framer-motion";
 import fleurs from "@/../public/fleurs.png";
-import crude from "@/../public/crude.png";
+import crude from "@/../public/Crude.png";
 import resine from "@/../public/gelatokushpolm.webp";
 import ProductSlide from "./ProductSlide";
 import { twMerge } from "tailwind-merge";
