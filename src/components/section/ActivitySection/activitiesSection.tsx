@@ -3,13 +3,13 @@ import Column from "@/components/common/Col/col";
 import GridContainer from "@/components/common/Container/container";
 import Paragraph from "@/components/common/Paragraph";
 import Title from "@/components/common/title";
-import { Container } from "postcss";
+
 import React from "react";
 import productionIcon from "@/../public/productionIcon.svg";
-import Image from "next/image";
+
 import { Swiper } from "swiper/react";
 import { SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+
 import Activity from "./activity";
 
 const activities = [
@@ -68,7 +68,7 @@ const ActivitiesSection = () => {
         <Column colStart={8} colEnd={24}>
           <Swiper slidesPerView={2.5} spaceBetween={30}>
             {activities.map((activity) => (
-              <SwiperSlide className="mySwiper">
+              <SwiperSlide key={activity.title} className="mySwiper">
                 <Activity
                   title={activity.title}
                   heading={activity.heading}
