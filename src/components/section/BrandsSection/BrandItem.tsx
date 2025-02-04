@@ -81,7 +81,7 @@ const BrandItem = ({ src, title, description, index }: BrandItemProps) => {
         className="text-[24px] font-black p-5 absolute left-3 bottom-3 w-full h-full overflow-hidden flex flex-col items-end justify-center"
         style={{
           backgroundColor: index % 2 === 0 ? "#262B1E" : "#2C3E50",
-          transformOrigin: "left bottom",
+          transformOrigin: index % 2 === 1 ? "left bottom" : "right top ",
         }}
         // Use transformTemplate to output a scale3d transform.
         transformTemplate={({ scaleX, scaleY }) =>

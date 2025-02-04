@@ -21,7 +21,7 @@ const Hero = () => {
   const { scrollY } = useScroll();
   // Create a parallax effect: as scrollY goes from 0 to 500,
   // the video shifts from 0px to 350px on the y-axis.
-  const y = useTransform(scrollY, [0, 500], [0, 350]);
+  const y = useTransform(scrollY, [0, 1000], [0, 350]);
 
   return (
     <>
