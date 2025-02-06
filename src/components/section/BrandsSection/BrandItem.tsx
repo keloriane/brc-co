@@ -46,13 +46,13 @@ const textItemVariants = {
 };
 
 type BrandItemProps = {
-  src: string;
+  src?: string;
   title: string;
   description: string;
   index: number;
 };
 
-const BrandItem = ({ src, title, description, index }: BrandItemProps) => {
+const BrandItem = ({ src, title, description }: BrandItemProps) => {
   // Create a motion version of Next.js's Link.
   const MotionLink = motion.create(Link);
 
@@ -61,16 +61,23 @@ const BrandItem = ({ src, title, description, index }: BrandItemProps) => {
       variants={containerVariants}
       initial="initial"
       whileHover="hover"
-      className="relative flex items-center justify-center w-[320px] h-[320px] sm:w-[240px] sm:h-[240px]"
+      className="relative flex items-center justify-center sm:w-[175px] sm:h-[175px]"
       style={{
         // border: index % 2 === 0 ? "1.5px solid #DCE7C8" : "1.5px solid #8DAEC3",
-        background: index % 2 === 0 ? "#f8fcf0" : "#f5fbfe",
+        border: "1px solid black",
+        borderRadius: "5px",
       }}
     >
       {/* Image content */}
-      <div className="flex flex-col m-auto w-[136px] items-center justify-center text-center gap-[10px]">
-        <div className="h-[200px] flex items-center">
-          <Image alt={title} src={src} width={166} height={105} />
+      <div className="flex flex-col m-auto w-[126px] items-center justify-center text-center gap-[10px]">
+        <div className="h-[110px] flex items-center">
+          {src ? (
+            <Image alt={title} src={src} width={105} height={85} />
+          ) : (
+            <h3 className="font-black text-budBlue uppercase">
+              Plus de marques ?
+            </h3>
+          )}
         </div>
       </div>
 
@@ -78,10 +85,12 @@ const BrandItem = ({ src, title, description, index }: BrandItemProps) => {
       <MotionLink
         variants={linkVariants}
         href="#"
-        className="text-[24px] font-black p-5 absolute left-3 bottom-3 w-full h-full overflow-hidden flex flex-col items-end justify-center"
+        className="font-black pl-3 left-2 bottom-2 absolute w-full h-full overflow-hidden flex flex-col items-end justify-center bg-white z-30"
         style={{
-          backgroundColor: index % 2 === 0 ? "#262B1E" : "#2C3E50",
-          transformOrigin: index % 2 === 1 ? "left bottom" : "right top ",
+          backgroundColor: src ? "#2C3E50" : "#345894",
+          borderRadius: "5px",
+          // transformOrigin: index % 2 === 1 ? "left bottom" : "right top ",
+          transformOrigin: "left bottom",
         }}
         // Use transformTemplate to output a scale3d transform.
         transformTemplate={({ scaleX, scaleY }) =>
@@ -89,16 +98,22 @@ const BrandItem = ({ src, title, description, index }: BrandItemProps) => {
         }
       >
         {/* SVG Icon (remains unchanged) */}
-        <div className="absolute top-5 left-[80%] z-30">
+        <div className="left-[100%] p-2">
           <svg
-            width="19"
-            height="19"
-            viewBox="0 0 19 19"
+            width="31"
+            height="30"
+            viewBox="0 0 31 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M18.5 2C18.5 1.17157 17.8284 0.5 17 0.5H3.5C2.67157 0.5 2 1.17157 2 2C2 2.82843 2.67157 3.5 3.5 3.5H15.5V15.5C15.5 16.3284 16.1716 17 17 17C17.8284 17 18.5 16.3284 18.5 15.5V2ZM3.06066 18.0607L18.0607 3.06066L15.9393 0.93934L0.93934 15.9393L3.06066 18.0607Z"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M18.2079 5.25024C18.138 5.45394 18.1 5.67249 18.1 5.8999V8.95024H4.25023V26.3H21.6V12.8998H25.1C25.1675 12.8998 25.2342 12.8965 25.3 12.8899V28C25.3 29.1046 24.4046 30 23.3 30H2.55023C1.44566 30 0.550232 29.1046 0.550232 28V7.25025C0.550232 6.14568 1.44566 5.25024 2.55023 5.25024H18.2079Z"
+              fill="#DCE7C8"
+            />
+            <path
+              d="M30.5 2.00006C30.5 1.17163 29.8284 0.500054 29 0.500052L15.5 0.500023C14.6716 0.500021 14 1.17159 14 2.00002C14 2.82845 14.6716 3.50002 15.5 3.50002L27.5 3.50005L27.5 15.5C27.5 16.3285 28.1715 17.0001 29 17.0001C29.8284 17.0001 30.5 16.3285 30.5 15.5001L30.5 2.00006ZM16.0607 17.0607L30.0607 3.06071L27.9394 0.93939L13.9393 14.9393L16.0607 17.0607Z"
               fill="#DCE7C8"
             />
           </svg>
@@ -106,11 +121,14 @@ const BrandItem = ({ src, title, description, index }: BrandItemProps) => {
 
         {/* Text content container */}
 
-        <motion.div variants={textContainerVariants} className="w-[190px]">
-          <div className=" overflow-hidden">
+        <motion.div
+          variants={textContainerVariants}
+          className="w-[175px] h-[175px] m-auto"
+        >
+          <div className=" overflow-hidden ">
             <motion.h4
               variants={textItemVariants}
-              className="text-[25px] font-black text-white uppercase"
+              className="text-[20px] font-black text-white uppercase"
             >
               {title}
             </motion.h4>

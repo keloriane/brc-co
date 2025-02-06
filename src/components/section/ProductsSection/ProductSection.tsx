@@ -59,7 +59,7 @@ const ProductsSection = () => {
   const handleTabClick = (index: number) => {
     setActiveTab(index);
     if (swiperRef.current) {
-      swiperRef.current.slideTo(index);
+      swiperRef.current.slideToLoop(index); // Use slideToLoop for proper index navigation
     }
   };
 
@@ -75,9 +75,9 @@ const ProductsSection = () => {
       </h2>
 
       {/* Tabs Navigation */}
-      <div className="relative w-full sm:flex hidden justify-center  mb-8">
-        <nav className="w-[90%] sm:w-[80%] lg:w-[48%] p-2  rounded-full flex justify-center">
-          <ul className="flex w-full max-w-xl ">
+      <div className="relative w-full sm:flex hidden justify-center mb-8">
+        <nav className="w-[90%] sm:w-[80%] lg:w-[48%] p-2 rounded-full flex justify-center">
+          <ul className="flex w-full max-w-xl">
             {products.map((product, index) => (
               <li
                 key={index}
@@ -110,14 +110,15 @@ const ProductsSection = () => {
           centeredSlides={true}
           spaceBetween={20}
           pagination={{ clickable: true }}
+          loop // Enable loop mode
           onSwiper={(swiper) => (swiperRef.current = swiper)}
-          onSlideChange={(swiper) => setActiveTab(swiper.activeIndex)}
+          onSlideChange={(swiper) => setActiveTab(swiper.realIndex)} // Use realIndex here
           breakpoints={{
             480: { slidesPerView: 1 },
             640: { slidesPerView: 1 },
-            840: { slidesPerView: 1.3 },
-            1024: { slidesPerView: 1.5 },
-            1280: { slidesPerView: 1.5 },
+            840: { slidesPerView: 1.5 },
+            1024: { slidesPerView: 1.6 },
+            1280: { slidesPerView: 1.8 },
           }}
           className="w-full"
         >

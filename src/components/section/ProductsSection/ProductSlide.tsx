@@ -27,7 +27,9 @@ const ProductSlide: React.FC<ProductSlideProps> = ({
         />
       </div>
       <div className="flex flex-col justify-center">
-        <h3 className="text-xl md:text-2xl font-bold mb-4">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-4 font-black">
+          {title}
+        </h3>
         <p className="mb-4 text-base md:text-lg">{description}</p>
         <Link href="#">En savoir plus</Link>
       </div>
