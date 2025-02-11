@@ -76,7 +76,7 @@ const ProductsSection = () => {
 
       {/* Tabs Navigation */}
       <div className="relative w-full sm:flex hidden justify-center mb-8">
-        <nav className="w-[90%] sm:w-[80%] lg:w-[48%] p-2 rounded-full flex justify-center">
+        <nav className="border border-budDarkBlue p-2 rounded-full flex justify-center">
           <ul className="flex w-full max-w-xl">
             {products.map((product, index) => (
               <li
@@ -85,7 +85,7 @@ const ProductsSection = () => {
                 className={`relative z-10 flex-1 cursor-pointer px-4 py-2 text-center flex items-center justify-center text-sm md:text-base ${
                   activeTab === index
                     ? "text-[#E8EDD4] font-semibold"
-                    : "text-gray-800"
+                    : "text-budDarkGreen"
                 }`}
               >
                 {product.title}
@@ -94,7 +94,7 @@ const ProductsSection = () => {
                   <motion.div
                     layoutId="tabHighlight"
                     className="absolute inset-0 bg-[#3A7498] rounded-full z-[-1]"
-                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    transition={{ stiffness: 300, damping: 25 }}
                   />
                 )}
               </li>
@@ -114,6 +114,7 @@ const ProductsSection = () => {
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => setActiveTab(swiper.realIndex)} // Use realIndex here
           breakpoints={{
+            40: { slidesPerView: 1 },
             480: { slidesPerView: 1 },
             640: { slidesPerView: 1 },
             840: { slidesPerView: 1.5 },

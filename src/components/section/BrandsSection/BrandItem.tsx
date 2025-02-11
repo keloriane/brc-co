@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -49,12 +49,12 @@ type BrandItemProps = {
   src?: string;
   title: string;
   description: string;
-  index: number;
+  index?: number;
 };
 
 const BrandItem = ({ src, title, description }: BrandItemProps) => {
   // Create a motion version of Next.js's Link.
-  const MotionLink = motion.create(Link);
+  // const MotionLink = motion.create(Link);
 
   return (
     <motion.div
@@ -82,9 +82,9 @@ const BrandItem = ({ src, title, description }: BrandItemProps) => {
       </div>
 
       {/* Animated overlay using MotionLink */}
-      <MotionLink
+      <motion.div
         variants={linkVariants}
-        href="#"
+        // href="#"
         className="font-black pl-3 left-2 bottom-2 absolute w-full h-full overflow-hidden flex flex-col items-end justify-center bg-white z-30"
         style={{
           backgroundColor: src ? "#2C3E50" : "#345894",
@@ -142,7 +142,7 @@ const BrandItem = ({ src, title, description }: BrandItemProps) => {
             </motion.p>
           </div>
         </motion.div>
-      </MotionLink>
+      </motion.div>
     </motion.div>
   );
 };

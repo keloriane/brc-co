@@ -5,6 +5,8 @@ import Menu from "@/components/common/menu";
 import ProductsSection from "@/components/section/ProductsSection/ProductSection";
 import BrandSection from "@/components/section/BrandsSection/brand";
 import ActivitiesSection from "@/components/section/ActivitySection/activitiesSection";
+import EbookSection from "@/components/section/Ebook/EbookSection";
+import AboutSection from "@/components/section/AboutSection/about";
 
 export default function Home() {
   return (
@@ -15,6 +17,8 @@ export default function Home() {
         <ProductsSection />
         <BrandSection />
         <ActivitiesSection />
+        <EbookSection />
+        <AboutSection />
       </main>
     </>
   );

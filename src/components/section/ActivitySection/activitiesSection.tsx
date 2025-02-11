@@ -141,7 +141,7 @@ const ActivitiesSection = () => {
             ))}
           </Swiper>
           {/* Custom Navigation Buttons */}
-          <div className="flex  gap-1 mt-4">
+          <div className="flex  gap-1 mt-6 ml-[19px]">
             <div className="cursor-pointer" onClick={handlePrev}>
               <svg
                 width="54"

@@ -53,6 +53,7 @@ const config: Config = {
         text: "#2C3E50",
         budGreen: "#C3D6A1",
         budBlue: "#3A7498",
+        budDarkBlue: "#2C3E50",
         budDarkGreen: "#262B1E",
       },
       fontSize: {

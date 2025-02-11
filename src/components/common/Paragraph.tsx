@@ -32,7 +32,7 @@ const Paragraph = ({ paragraph }: { paragraph: string }) => {
 
   useEffect(() => {
     // When the component is nearly in view (scroll progress > 0.1), start the animation.
-    const unsubscribe = scrollYProgress.onChange((latest) => {
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
       if (latest > 0.1) {
         controls.start("visible");
       }

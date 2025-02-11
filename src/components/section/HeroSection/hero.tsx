@@ -52,7 +52,9 @@ const Hero = () => {
         </motion.video>
 
         {/* Content Overlay */}
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           className={twMerge(
             "absolute inset-0 flex items-end",
             styles.gradient
@@ -75,7 +77,7 @@ const Hero = () => {
               ))}
             </motion.h1>
           </div>
-        </div>
+        </motion.div>
       </header>
     </>
   );
