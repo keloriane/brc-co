@@ -82,10 +82,8 @@ const ProductsSection = () => {
               <li
                 key={index}
                 onClick={() => handleTabClick(index)}
-                className={`relative z-10 flex-1 cursor-pointer px-4 py-2 text-center flex items-center justify-center text-sm md:text-base ${
-                  activeTab === index
-                    ? "text-[#E8EDD4] font-semibold"
-                    : "text-budDarkGreen"
+                className={`relative font-semibold z-10 flex-1 cursor-pointer px-4 py-2 text-center flex items-center justify-center text-sm md:text-base ${
+                  activeTab === index ? "text-budGreen " : "text-budDarkGreen"
                 }`}
               >
                 {product.title}
@@ -93,7 +91,7 @@ const ProductsSection = () => {
                 {activeTab === index && (
                   <motion.div
                     layoutId="tabHighlight"
-                    className="absolute inset-0 bg-[#3A7498] rounded-full z-[-1]"
+                    className="absolute inset-0 bg-[#353921] rounded-full z-[-1]"
                     transition={{ stiffness: 300, damping: 25 }}
                   />
                 )}
