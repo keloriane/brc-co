@@ -62,7 +62,7 @@ const Navbar = () => {
         <Logo color={scrolled ? "#2C3E50" : "white"} />
 
         {/* Desktop Menu */}
-        <ul
+        <ol
           className={twMerge(
             "hidden md:flex space-x-6 font-semibold text-[20px] transition-colors duration-300",
             scrolled ? "text-[#2C3E50]" : "text-white"
@@ -132,7 +132,7 @@ const Navbar = () => {
               )}
             </li>
           ))}
-        </ul>
+        </ol>
 
         {/* Hamburger Button (Tablet & Mobile) */}
         <button

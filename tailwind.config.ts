@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-
 import theme from "./src/config/theme.json";
 
 let font_base = Number(theme.fonts.font_size.base.replace("px", ""));

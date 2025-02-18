@@ -30,7 +30,11 @@ const BrandSection = () => {
             au sein de l’U.E.
           </h3>
         </Column>
-        <Column colStart={5} colEnd={18} className="w-full p-5">
+        <Column
+          colStart={[1, 1, 1, 5, 5]}
+          colEnd={[24, 24, 24, 18, 18]}
+          className="w-full p-5"
+        >
           <div className="flex flex-wrap justify-center gap-[24px] items-center w-full max-w-[1340px]">
             {/* Always render the initial brands */}
             {initialBrands.map((brand, i) => (
@@ -46,7 +50,7 @@ const BrandSection = () => {
               {showAll &&
                 extraBrands.map((brand, i) => (
                   <motion.div
-                    key={brand.title}
+                    key={i}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}

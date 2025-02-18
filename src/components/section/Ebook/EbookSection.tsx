@@ -41,7 +41,7 @@ const EbookSection = () => {
   return (
     <section ref={ref} className="relative">
       {/* The white content box – using a fixed position so that we can animate its top value */}
-      <motion.div className=" absolute top-[10%]  left-[30%] z-20 bg-white py-[47px] px-[33px] max-w-[448px] flex flex-col items-center justify-center text-center gap-[55px] text-budBlue">
+      <motion.div className=" absolute top-[25%]  left-[35%] z-20 bg-white py-[47px] px-[33px] max-w-[448px] flex flex-col items-center justify-center text-center gap-[55px] text-budBlue">
         <div>
           <Image src={squareBuddy} width={282} height={87} alt="Square Buddy" />
         </div>
@@ -66,7 +66,7 @@ const EbookSection = () => {
 
       <GridContainer columns={24} className="h-[910px]">
         <Column
-          colStart={[1, 1, 9, 9, 9]}
+          colStart={[1, 1, 1, 1, 1]}
           colEnd={[27, 27, 27, 27, 27]}
           className="relative w-full h-full mr-0 bg-gray-500"
         >

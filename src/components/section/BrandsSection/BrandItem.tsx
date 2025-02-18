@@ -72,7 +72,9 @@ const BrandItem = ({ src, title, description }: BrandItemProps) => {
       <div className="flex flex-col m-auto w-[126px] items-center justify-center text-center gap-[10px]">
         <div className="h-[110px] flex items-center">
           {src ? (
-            <Image alt={title} src={src} width={105} height={85} />
+            <div className="relative w-[105px] h-[85px]">
+              <Image alt={title} src={src} fill className="object-contain" />
+            </div>
           ) : (
             <h3 className="font-black text-budBlue uppercase">
               Plus de marques ?
@@ -123,12 +125,12 @@ const BrandItem = ({ src, title, description }: BrandItemProps) => {
 
         <motion.div
           variants={textContainerVariants}
-          className="w-[175px] h-[175px] m-auto"
+          className="w-[175px] h-[175px] m-auto p-4"
         >
           <div className=" overflow-hidden ">
             <motion.h4
               variants={textItemVariants}
-              className="text-[20px] font-black text-white uppercase"
+              className="sm:text-[12px] md:text-[20px] font-black text-white uppercase"
               style={{ color: src ? "#DCE7C8" : "#2C3E50" }}
             >
               {title}
@@ -137,7 +139,7 @@ const BrandItem = ({ src, title, description }: BrandItemProps) => {
           <div className="overflow-hidden">
             <motion.p
               variants={textItemVariants}
-              className="text-[16px] text-white font-medium"
+              className="sm:text-[10px] md:text-[16px] text-white font-medium"
             >
               {description}
             </motion.p>
