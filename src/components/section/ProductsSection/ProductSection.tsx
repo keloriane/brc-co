@@ -14,46 +14,17 @@ import ProductSlide from "./ProductSlide";
 import { twMerge } from "tailwind-merge";
 import styles from "./styles.module.scss";
 import { Swiper as SwiperType } from "swiper";
+import { GutenbergBlock } from "@/types";
+import parse from "html-react-parser";
 
-const products = [
-  {
-    title: "Fleurs de chanvre",
-    src: fleurs,
-    description: `
-      Grâce à notre position de leader sur le premier marché régulé du CBD au sein de l’U.E., nous avons développé des services pour tous types d’entreprises actives dans ce marché en pleine expansion. 
-      Grâce à notre position de leader sur le premier marché régulé du CBD au sein de l’U.E., nous avons développé des services pour tous types d’entreprises actives dans ce marché en pleine expansion.
-    `,
-  },
-  {
-    title: "Huiles de CBD",
-    src: crude,
-    description: `
-      Grâce à notre position de leader sur le premier marché régulé du CBD au sein de l’U.E., nous avons développé des services pour tous types d’entreprises actives dans ce marché en pleine expansion. 
-      Grâce à notre position de leader sur le premier marché régulé du CBD au sein de l’U.E., nous avons développé des services pour tous types d’entreprises actives dans ce marché en pleine expansion.
-    `,
-  },
-  {
-    title: "Résines et Hash",
-    src: resine,
-    description: `
-      Grâce à notre position de leader sur le premier marché régulé du CBD au sein de l’U.E., nous avons développé des services pour tous types d’entreprises actives dans ce marché en pleine expansion. 
-      Grâce à notre position de leader sur le premier marché régulé du CBD au sein de l’U.E., nous avons développé des services pour tous types d’entreprises actives dans ce marché en pleine expansion.
-    `,
-  },
-  {
-    title: "Extrait concentré",
-    src: fleurs,
-    description: `
-      Grâce à notre position de leader sur le premier marché régulé du CBD au sein de l’U.E., nous avons développé des services pour tous types d’entreprises actives dans ce marché en pleine expansion. 
-      Grâce à notre position de leader sur le premier marché régulé du CBD au sein de l’U.E., nous avons développé des services pour tous types d’entreprises actives dans ce marché en pleine expansion.
-    `,
-  },
-];
-
-const ProductsSection = () => {
+const ProductsSection = ({ block }: { block: GutenbergBlock }) => {
   const [activeTab, setActiveTab] = useState(0);
 
+  const products = block.innerBlocks;
+
   const swiperRef = useRef<SwiperType | null>(null);
+
+  console.log(products[0].attributes.data);
 
   // Change slide when a tab is clicked
   const handleTabClick = (index: number) => {
@@ -66,15 +37,14 @@ const ProductsSection = () => {
   return (
     <section
       className={twMerge(
-        "products-list text-white px-4 mt-12 md:mt-20 lg:mt-32",
+        "products-list text-white px-4 mt-2 md:mt-2 lg:mt-2",
         styles.sectionContainer
       )}
     >
-      <h2 className="text-[#3A7498] uppercase text-center mb-6 font-black text-2xl md:text-3xl">
+      {/* <h2 className="text-[#3A7498] uppercase text-center mb-6 font-black text-2xl md:text-3xl">
         Nos produits
-      </h2>
+      </h2> */}
 
-      {/* Tabs Navigation */}
       <div className="relative w-full sm:flex hidden justify-center mb-8">
         <nav className="border border-budDarkBlue p-2 rounded-full flex justify-center">
           <ul className="flex w-full max-w-xl">
@@ -86,8 +56,8 @@ const ProductsSection = () => {
                   activeTab === index ? "text-budGreen " : "text-budDarkGreen"
                 }`}
               >
-                {product.title}
-                {/* Animate Background on Active Tab */}
+                {product.attributes.data.title}
+
                 {activeTab === index && (
                   <motion.div
                     layoutId="tabHighlight"
@@ -101,7 +71,6 @@ const ProductsSection = () => {
         </nav>
       </div>
 
-      {/* Swiper Slider */}
       <div className="mt-8">
         <Swiper
           modules={[Navigation, Pagination, EffectCreative]}
@@ -130,10 +99,10 @@ const ProductsSection = () => {
                 )}
               >
                 <ProductSlide
-                  title={product.title}
-                  src={product.src}
-                  alt={product.title}
-                  description={product.description}
+                  title={product.attributes.data.title}
+                  src={"/#"}
+                  alt={product.attributes.data.title}
+                  description={parse(product.attributes.data.description)}
                 />
               </div>
             </SwiperSlide>

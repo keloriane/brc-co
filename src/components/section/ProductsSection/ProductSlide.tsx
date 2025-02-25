@@ -1,11 +1,12 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
+import { Element } from "html-react-parser";
 
 interface ProductSlideProps {
   title: string;
-  description: string;
-  src: StaticImageData;
+  description: ReactNode;
+  src: StaticImageData | string;
   alt: string;
 }
 
@@ -28,7 +29,8 @@ const ProductSlide: React.FC<ProductSlideProps> = ({
       </div>
       <div className="flex flex-col justify-center">
         <h3 className="text-xl md:text-2xl mb-4 font-black">{title}</h3>
-        <p className="mb-4 text-base md:text-lg">{description}</p>
+
+        {description}
         <Link href="#">En savoir plus</Link>
       </div>
     </div>

@@ -44,7 +44,12 @@ const Activity = ({
         <p className="text-[16px] leading-[120%]">{description}</p>
       </div>
       <div>
-        <Link href="#" className="font-black text-budGreen text-sm">
+        <Link
+          href="#"
+          className={`font-black  text-sm ${
+            active ? " text-budGreen" : " text-budBlue"
+          }`}
+        >
           {" "}
           En savoir plus
         </Link>

@@ -1,25 +1,70 @@
-import React from "react";
+import { gql } from "@apollo/client";
+import client from "../../client";
+import { BlockRenderer } from "@/components/BlockRenderer";
+import { cleanAndTransformBlock } from "@/utils/cleanAndTransformBlocks";
+import { GutenbergBlock } from "@/types/GuttenBergBlock";
+import { PageProps } from "@/types";
 
-import Hero from "@/components/section/HeroSection/hero";
-import Menu from "@/components/common/menu";
-import ProductsSection from "@/components/section/ProductsSection/ProductSection";
-import BrandSection from "@/components/section/BrandsSection/brand";
-import ActivitiesSection from "@/components/section/ActivitySection/activitiesSection";
-import EbookSection from "@/components/section/Ebook/EbookSection";
-import AboutSection from "@/components/section/AboutSection/about";
+// Fetch data from the GraphQL API
+const getData = async (): Promise<PageProps | null> => {
+  try {
+    const { data } = await client.query<{
+      nodeByUri: {
+        id: string;
+        title: string;
+        blocks: GutenbergBlock[];
+      } | null;
+    }>({
+      query: gql`
+        query GetPages {
+          nodeByUri(uri: "/") {
+            ... on Page {
+              id
+              title
+              blocks(postTemplate: false)
+            }
+          }
+        }
+      `,
+      variables: { uri: "/" },
+    });
 
-export default function Home() {
+    if (!data?.nodeByUri) {
+      console.error("No data returned for the requested URI.");
+      return null;
+    }
+
+    // Clean and transform blocks using your utility function
+    const transformedBlocks = cleanAndTransformBlock(data.nodeByUri.blocks);
+
+    return {
+      id: data.nodeByUri.id,
+      title: data.nodeByUri.title,
+      blocks: transformedBlocks,
+    };
+  } catch (error) {
+    // Ensure type-safety by narrowing the type of `error`
+    if (error instanceof Error) {
+      console.error("Error fetching data:", error.message);
+    } else {
+      console.error("Unknown error fetching data:", error);
+    }
+    return null;
+  }
+};
+
+export default async function Home() {
+  const data = await getData();
+
+  console.log(data);
+
+  if (!data) {
+    return <div>Error: Unable to fetch data.</div>;
+  }
+
   return (
-    <>
-      <main className="relative">
-        <Menu />
-        <Hero />
-        <ProductsSection />
-        <BrandSection />
-        <ActivitiesSection />
-        <EbookSection />
-        <AboutSection />
-      </main>
-    </>
+    <div>
+      <BlockRenderer blocks={data.blocks} />
+    </div>
   );
 }

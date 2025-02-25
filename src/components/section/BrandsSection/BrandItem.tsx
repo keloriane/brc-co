@@ -102,8 +102,8 @@ const BrandItem = ({ src, title, description }: BrandItemProps) => {
         {/* SVG Icon (remains unchanged) */}
         <div className="left-[100%] p-2">
           <svg
-            width="31"
-            height="30"
+            width="15"
+            height="15"
             viewBox="0 0 31 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

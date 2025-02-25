@@ -1,10 +1,9 @@
 import React from "react";
 import Column from "@/components/common/Col/col";
 import GridContainer from "@/components/common/Container/container";
-
-import Cta from "@/components/common/Cta/Cta";
 import Image from "next/image";
 import tract from "@/../public/tract.png";
+import AnimatedButton from "@/components/common/Burron";
 
 const AboutSection = () => {
   return (
@@ -21,9 +20,10 @@ const AboutSection = () => {
               réunit alors avec l’ambition de devenir l’un des acteurs
               incontournables du cannabis en Belgique.
             </p>
-            <Cta href="/about" className="mt-[45px]">
-              About us
-            </Cta>
+
+            <AnimatedButton href="/about" className="mt-[45px]">
+              En savoir plus
+            </AnimatedButton>
           </Column>
         </GridContainer>
       </section>
